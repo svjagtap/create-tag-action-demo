@@ -1,0 +1,33 @@
+# This is a generate tag workflow to create tags when branch creation
+
+name: Generate Tag
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on branch creation from main branch
+  create:
+    branches: [ main ]
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    name: Generate Tag
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out latest code
+        uses: actions/checkout@v2
+
+      # Bump version and push tag
+      - name: Bump version and push tag
+        uses: ChloePlanet/github-tag-action@master
+        env: 
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         WITH_V: true
