@@ -1,6 +1,7 @@
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# added one line for testing
 
 ## User settings
 xcuserdata/
